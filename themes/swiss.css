@@ -1,0 +1,202 @@
+/* ============================================================
+   THEME: SWISS — stark international-style minimalism
+   White, black, signal red. Massive grotesque type, hard grid.
+   ============================================================ */
+
+/* Fonts loaded via <link> in index.html */
+
+:root {
+  --bg: #ffffff;
+  --text: #0a0a0a;
+  --muted: #555555;
+  --red: #e8442e;
+  --line: #0a0a0a;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Archivo", sans-serif;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1.1rem 1.5rem;
+  border-bottom: 2px solid var(--line);
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  z-index: 10;
+}
+
+.logo {
+  font-weight: 900;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+}
+
+.logo-mark {
+  color: var(--red);
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.site-nav a {
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--text);
+}
+
+.site-nav a:hover {
+  color: var(--red);
+}
+
+.site-nav .nav-cta {
+  color: var(--red);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  padding: 5rem 1.5rem 4rem;
+  border-bottom: 2px solid var(--line);
+}
+
+.hero-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.kicker {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--red);
+  margin-bottom: 1rem;
+}
+
+.hero h1 {
+  font-weight: 900;
+  font-size: clamp(4.5rem, 14vw, 13rem);
+  line-height: 0.85;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+}
+
+.tagline {
+  margin-top: 2rem;
+  max-width: 420px;
+  font-size: 1rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.button {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.85rem 2rem;
+  background: var(--text);
+  color: var(--bg);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.button:hover {
+  background: var(--red);
+}
+
+/* ---------- Services ---------- */
+.services {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.service {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 1.5rem;
+  padding: 3.25rem 1.5rem;
+  border-bottom: 2px solid var(--line);
+  align-items: baseline;
+}
+
+.num {
+  font-weight: 900;
+  font-size: 1rem;
+  color: var(--red);
+}
+
+.service h2 {
+  font-weight: 800;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  margin-bottom: 0.9rem;
+}
+
+.service p {
+  color: var(--muted);
+  max-width: 560px;
+  font-size: 0.95rem;
+}
+
+.service:hover h2 {
+  color: var(--red);
+}
+
+/* ---------- Contact ---------- */
+.contact {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 6rem 1.5rem;
+}
+
+.contact .kicker {
+  color: var(--red);
+}
+
+.contact h2 {
+  font-weight: 900;
+  font-size: clamp(3rem, 9vw, 7rem);
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.contact p {
+  color: var(--muted);
+  max-width: 480px;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  border-top: 2px solid var(--line);
+  padding: 1.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 640px) {
+  .service { grid-template-columns: 1fr; gap: 0.5rem; }
+}

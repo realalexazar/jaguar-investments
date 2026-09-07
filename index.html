@@ -4,13 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gamma Capital</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&family=Archivo:wght@400;500;600;800;900&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Source+Sans+3:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="base.css" />
+  <link rel="stylesheet" href="themes/noir.css" id="theme-css" />
 </head>
 <body>
 
   <!-- ============ HEADER / NAV ============ -->
   <header class="site-header">
-    <a class="logo" href="#top">Gamma Capital</a>
+    <a class="logo" href="#top"><span class="logo-mark">&Gamma;</span> Gamma Capital</a>
     <nav class="site-nav">
       <a href="#capital-markets">Capital Markets</a>
       <a href="#investments">Investments</a>
@@ -25,41 +29,65 @@
 
     <!-- ============ HERO ============ -->
     <section class="hero">
-      <h1>Gamma Capital</h1>
-      <p class="tagline">Real estate capital, investment, and advisory.</p>
-      <a href="#contact" class="button">Get in Touch</a>
+      <div class="hero-inner">
+        <p class="kicker">Real Estate &mdash; Capital &middot; Investment &middot; Advisory</p>
+        <h1>Gamma<br />Capital</h1>
+        <p class="tagline">Institutional-grade real estate capital, investment, and advisory.</p>
+        <a href="#contact" class="button">Get in Touch</a>
+      </div>
     </section>
 
     <!-- ============ CORE SERVICES ============ -->
-    <section id="capital-markets" class="service">
-      <h2>Capital Markets</h2>
-      <p>Placeholder copy. Debt and equity placement, financing strategy, and lender relationships.</p>
-    </section>
+    <div class="services">
 
-    <section id="investments" class="service">
-      <h2>Investments</h2>
-      <p>Placeholder copy. Acquisitions, asset management, and investment strategy across property types.</p>
-    </section>
+      <section id="capital-markets" class="service">
+        <span class="num">01</span>
+        <div class="service-copy">
+          <h2>Capital Markets</h2>
+          <p>Placeholder copy. Debt and equity placement, financing strategy, and lender relationships.</p>
+        </div>
+      </section>
 
-    <section id="underwriting-consulting" class="service">
-      <h2>Underwriting &amp; Consulting</h2>
-      <p>Placeholder copy. Deal-level underwriting, due diligence, and advisory services.</p>
-    </section>
+      <section id="investments" class="service">
+        <span class="num">02</span>
+        <div class="service-copy">
+          <h2>Investments</h2>
+          <p>Placeholder copy. Acquisitions, asset management, and investment strategy across property types.</p>
+        </div>
+      </section>
 
-    <section id="research" class="service">
-      <h2>Research</h2>
-      <p>Placeholder copy. Market intelligence, submarket analysis, and thought leadership.</p>
-    </section>
+      <section id="underwriting-consulting" class="service">
+        <span class="num">03</span>
+        <div class="service-copy">
+          <h2>Underwriting &amp; Consulting</h2>
+          <p>Placeholder copy. Deal-level underwriting, due diligence, and advisory services.</p>
+        </div>
+      </section>
 
-    <section id="property-management" class="service">
-      <h2>Property Management</h2>
-      <p>Placeholder copy. Operations, leasing, and asset-level performance.</p>
-    </section>
+      <section id="research" class="service">
+        <span class="num">04</span>
+        <div class="service-copy">
+          <h2>Research</h2>
+          <p>Placeholder copy. Market intelligence, submarket analysis, and thought leadership.</p>
+        </div>
+      </section>
+
+      <section id="property-management" class="service">
+        <span class="num">05</span>
+        <div class="service-copy">
+          <h2>Property Management</h2>
+          <p>Placeholder copy. Operations, leasing, and asset-level performance.</p>
+        </div>
+      </section>
+
+    </div>
 
     <!-- ============ CONTACT ============ -->
     <section id="contact" class="contact">
-      <h2>Contact</h2>
+      <p class="kicker">Contact</p>
+      <h2>Let&rsquo;s talk.</h2>
       <p>Placeholder copy. Email, phone, and office location go here.</p>
+      <a href="mailto:hello@gammacapital.com" class="button">hello@gammacapital.com</a>
     </section>
 
   </main>
@@ -67,6 +95,48 @@
   <footer class="site-footer">
     <p>&copy; 2026 Gamma Capital. All rights reserved.</p>
   </footer>
+
+  <!-- ============ THEME SWITCHER (dev tool for shopping aesthetics) ============ -->
+  <div class="theme-switcher" aria-label="Theme switcher">
+    <button data-theme="noir">Noir</button>
+    <button data-theme="swiss">Swiss</button>
+    <button data-theme="editorial">Editorial</button>
+    <button data-theme="meridian">Meridian</button>
+    <button data-theme="slate">Slate</button>
+  </div>
+
+  <script>
+    (function () {
+      var hrefs = {
+        noir: "themes/noir.css",
+        swiss: "themes/swiss.css",
+        editorial: "themes/editorial.css",
+        meridian: "themes/meridian.css",
+        slate: "styles.css"
+      };
+      var link = document.getElementById("theme-css");
+      var buttons = document.querySelectorAll(".theme-switcher button");
+
+      function setTheme(name) {
+        if (!hrefs[name]) name = "noir";
+        link.setAttribute("href", hrefs[name]);
+        document.documentElement.setAttribute("data-theme", name);
+        try { localStorage.setItem("gamma-theme", name); } catch (e) {}
+        buttons.forEach(function (b) {
+          b.classList.toggle("active", b.dataset.theme === name);
+        });
+      }
+
+      buttons.forEach(function (b) {
+        b.addEventListener("click", function () { setTheme(b.dataset.theme); });
+      });
+
+      var param = new URLSearchParams(location.search).get("theme");
+      var saved = null;
+      try { saved = localStorage.getItem("gamma-theme"); } catch (e) {}
+      setTheme(param || saved || "noir");
+    })();
+  </script>
 
 </body>
 </html>

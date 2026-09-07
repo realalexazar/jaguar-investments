@@ -1,0 +1,230 @@
+/* ============================================================
+   THEME: MERIDIAN — blue-chip institutional modern
+   Deep navy, steel blue, glassy cards, geometric grotesque.
+   ============================================================ */
+
+/* Fonts loaded via <link> in index.html */
+
+:root {
+  --bg: #081826;
+  --bg-2: #0c2438;
+  --text: #e8eef4;
+  --muted: #8ba3b8;
+  --steel: #5ec1e8;
+  --line: rgba(94, 193, 232, 0.18);
+}
+
+body {
+  background:
+    radial-gradient(ellipse 70% 50% at 80% -10%, rgba(94, 193, 232, 0.14), transparent),
+    radial-gradient(ellipse 60% 40% at 0% 110%, rgba(94, 193, 232, 0.08), transparent),
+    var(--bg);
+  color: var(--text);
+  font-family: "Space Grotesk", sans-serif;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.4rem 1.5rem;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+
+.logo-mark {
+  color: var(--steel);
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.6rem;
+}
+
+.site-nav a {
+  text-decoration: none;
+  color: #b6c8d8;
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.site-nav a:hover {
+  color: var(--steel);
+}
+
+.site-nav .nav-cta {
+  color: var(--bg);
+  background: var(--steel);
+  padding: 0.45rem 1.1rem;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.site-nav .nav-cta:hover {
+  color: var(--bg);
+  filter: brightness(1.12);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 7rem 1.5rem 6rem;
+}
+
+.kicker {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--steel);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.45rem 1.1rem;
+  margin-bottom: 1.75rem;
+  background: rgba(94, 193, 232, 0.06);
+}
+
+.hero h1 {
+  font-weight: 700;
+  font-size: clamp(3.5rem, 10vw, 8rem);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  background: linear-gradient(115deg, #ffffff 30%, var(--steel));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.tagline {
+  margin-top: 1.75rem;
+  max-width: 480px;
+  color: var(--muted);
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.button {
+  display: inline-block;
+  margin-top: 2.5rem;
+  padding: 0.9rem 2.25rem;
+  background: var(--steel);
+  color: var(--bg);
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: filter 0.2s, transform 0.2s;
+}
+
+.button:hover {
+  filter: brightness(1.12);
+  transform: translateY(-2px);
+}
+
+/* ---------- Services ---------- */
+.services {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem 5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.25rem;
+}
+
+.service {
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 2.25rem 2rem;
+  backdrop-filter: blur(8px);
+  transition: border-color 0.25s, background 0.25s, transform 0.25s;
+  overflow: hidden;
+}
+
+.service::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--steel), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.service:hover {
+  border-color: rgba(94, 193, 232, 0.45);
+  background: rgba(94, 193, 232, 0.05);
+  transform: translateY(-3px);
+}
+
+.service:hover::before {
+  opacity: 1;
+}
+
+.num {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--steel);
+  margin-bottom: 1.5rem;
+}
+
+.service h2 {
+  font-weight: 600;
+  font-size: 1.55rem;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.8rem;
+}
+
+.service p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* ---------- Contact ---------- */
+.contact {
+  max-width: 1200px;
+  margin: 0 auto 5rem;
+  padding: 5rem 1.5rem;
+  text-align: center;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(94, 193, 232, 0.07), transparent);
+}
+
+.contact h2 {
+  font-weight: 700;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+.contact p {
+  color: var(--muted);
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+  border-top: 1px solid var(--line);
+}

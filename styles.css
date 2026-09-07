@@ -133,6 +133,30 @@ body {
   max-width: 640px;
 }
 
+/* ---------- New markup hooks (kept neutral for Slate) ---------- */
+.kicker {
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 0.75rem;
+}
+
+.num {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  margin-bottom: 0.5rem;
+}
+
+.logo-mark {
+  font-weight: 700;
+}
+
+.contact {
+  text-align: left;
+}
+
 /* ---------- Footer ---------- */
 .site-footer {
   max-width: var(--max-width);
