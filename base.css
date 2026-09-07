@@ -28,39 +28,5 @@ a {
   color: inherit;
 }
 
-/* ---------- Theme switcher (always visible, theme-agnostic) ---------- */
-.theme-switcher {
-  position: fixed;
-  bottom: 1.25rem;
-  right: 1.25rem;
-  z-index: 999;
-  display: flex;
-  gap: 0.35rem;
-  padding: 0.4rem;
-  border-radius: 999px;
-  background: rgba(20, 20, 24, 0.82);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
-}
-
-.theme-switcher button {
-  border: none;
-  background: transparent;
-  color: rgba(255, 255, 255, 0.65);
-  font: 600 0.72rem/1 system-ui, sans-serif;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 0.5rem 0.8rem;
-  border-radius: 999px;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.theme-switcher button:hover {
-  color: #ffffff;
-}
-
-.theme-switcher button.active {
-  background: #ffffff;
-  color: #141418;
-}
+/* (Theme switcher removed — Noir locked in as the site's look.
+   Alternate explorations remain in themes/ for reference.) */

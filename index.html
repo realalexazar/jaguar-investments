@@ -6,9 +6,9 @@
   <title>Gamma Capital</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&family=Archivo:wght@400;500;600;800;900&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Source+Sans+3:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" />
   <link rel="stylesheet" href="base.css" />
-  <link rel="stylesheet" href="themes/noir.css" id="theme-css" />
+  <link rel="stylesheet" href="themes/noir.css" />
 </head>
 <body>
 
@@ -95,48 +95,6 @@
   <footer class="site-footer">
     <p>&copy; 2026 Gamma Capital. All rights reserved.</p>
   </footer>
-
-  <!-- ============ THEME SWITCHER (dev tool for shopping aesthetics) ============ -->
-  <div class="theme-switcher" aria-label="Theme switcher">
-    <button data-theme="noir">Noir</button>
-    <button data-theme="swiss">Swiss</button>
-    <button data-theme="editorial">Editorial</button>
-    <button data-theme="meridian">Meridian</button>
-    <button data-theme="slate">Slate</button>
-  </div>
-
-  <script>
-    (function () {
-      var hrefs = {
-        noir: "themes/noir.css",
-        swiss: "themes/swiss.css",
-        editorial: "themes/editorial.css",
-        meridian: "themes/meridian.css",
-        slate: "styles.css"
-      };
-      var link = document.getElementById("theme-css");
-      var buttons = document.querySelectorAll(".theme-switcher button");
-
-      function setTheme(name) {
-        if (!hrefs[name]) name = "noir";
-        link.setAttribute("href", hrefs[name]);
-        document.documentElement.setAttribute("data-theme", name);
-        try { localStorage.setItem("gamma-theme", name); } catch (e) {}
-        buttons.forEach(function (b) {
-          b.classList.toggle("active", b.dataset.theme === name);
-        });
-      }
-
-      buttons.forEach(function (b) {
-        b.addEventListener("click", function () { setTheme(b.dataset.theme); });
-      });
-
-      var param = new URLSearchParams(location.search).get("theme");
-      var saved = null;
-      try { saved = localStorage.getItem("gamma-theme"); } catch (e) {}
-      setTheme(param || saved || "noir");
-    })();
-  </script>
 
 </body>
 </html>
