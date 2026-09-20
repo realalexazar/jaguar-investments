@@ -6,9 +6,9 @@
   <title>Jaguar Investments</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400;1,6..96,500&family=Inter:wght@300;400;500;600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" />
   <link rel="stylesheet" href="base.css" />
-  <link rel="stylesheet" href="themes/jaguar.css" />
+  <link rel="stylesheet" href="themes/obsidian.css" id="theme-css" />
 </head>
 <body>
 
@@ -17,7 +17,8 @@
     <a class="logo" href="#top"><span class="logo-mark">J</span> Jaguar Investments</a>
     <nav class="site-nav">
       <a href="#capital-markets">Capital Markets</a>
-      <a href="#investments">Investments</a>
+      <a href="#real-estate-investments">Real Estate</a>
+      <a href="#private-equity-investments">Private Equity</a>
       <a href="#underwriting-consulting">Underwriting &amp; Consulting</a>
       <a href="#research">Research</a>
       <a href="#property-management">Property Management</a>
@@ -48,16 +49,24 @@
         </div>
       </section>
 
-      <section id="investments" class="service">
+      <section id="real-estate-investments" class="service">
         <span class="num">02</span>
         <div class="service-copy">
-          <h2>Investments</h2>
-          <p>Placeholder copy. Acquisitions, asset management, and investment strategy across property types.</p>
+          <h2>Real Estate Investments</h2>
+          <p>Placeholder copy. Direct acquisitions, joint ventures, and asset management across property types.</p>
+        </div>
+      </section>
+
+      <section id="private-equity-investments" class="service">
+        <span class="num">03</span>
+        <div class="service-copy">
+          <h2>Private Equity Investments</h2>
+          <p>Placeholder copy. Direct and co-investments in operating companies and real-asset platforms.</p>
         </div>
       </section>
 
       <section id="underwriting-consulting" class="service">
-        <span class="num">03</span>
+        <span class="num">04</span>
         <div class="service-copy">
           <h2>Underwriting &amp; Consulting</h2>
           <p>Placeholder copy. Deal-level underwriting, due diligence, and advisory services.</p>
@@ -65,7 +74,7 @@
       </section>
 
       <section id="research" class="service">
-        <span class="num">04</span>
+        <span class="num">05</span>
         <div class="service-copy">
           <h2>Research</h2>
           <p>Placeholder copy. Market intelligence, submarket analysis, and thought leadership.</p>
@@ -73,7 +82,7 @@
       </section>
 
       <section id="property-management" class="service">
-        <span class="num">05</span>
+        <span class="num">06</span>
         <div class="service-copy">
           <h2>Property Management</h2>
           <p>Placeholder copy. Operations, leasing, and asset-level performance.</p>
@@ -95,6 +104,46 @@
   <footer class="site-footer">
     <p>&copy; 2026 Jaguar Investments. All rights reserved.</p>
   </footer>
+
+  <!-- ============ THEME SWITCHER (dev tool for shopping aesthetics) ============ -->
+  <div class="theme-switcher" aria-label="Theme switcher">
+    <button data-theme="obsidian">Obsidian</button>
+    <button data-theme="aurum">Aurum</button>
+    <button data-theme="graphite">Graphite</button>
+    <button data-theme="porcelain">Porcelain</button>
+  </div>
+
+  <script>
+    (function () {
+      var hrefs = {
+        obsidian: "themes/obsidian.css",
+        aurum: "themes/aurum.css",
+        graphite: "themes/graphite.css",
+        porcelain: "themes/porcelain.css"
+      };
+      var link = document.getElementById("theme-css");
+      var buttons = document.querySelectorAll(".theme-switcher button");
+
+      function setTheme(name) {
+        if (!hrefs[name]) name = "obsidian";
+        link.setAttribute("href", hrefs[name]);
+        document.documentElement.setAttribute("data-theme", name);
+        try { localStorage.setItem("jaguar-theme", name); } catch (e) {}
+        buttons.forEach(function (b) {
+          b.classList.toggle("active", b.dataset.theme === name);
+        });
+      }
+
+      buttons.forEach(function (b) {
+        b.addEventListener("click", function () { setTheme(b.dataset.theme); });
+      });
+
+      var param = new URLSearchParams(location.search).get("theme");
+      var saved = null;
+      try { saved = localStorage.getItem("jaguar-theme"); } catch (e) {}
+      setTheme(param || saved || "obsidian");
+    })();
+  </script>
 
 </body>
 </html>

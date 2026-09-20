@@ -1,0 +1,209 @@
+/* ============================================================
+   THEME: PORCELAIN — quiet power
+   Warm ivory, near-black serif, hairline rules. The Row /
+   Celine restraint: nothing raised, nothing decorated.
+   ============================================================ */
+
+:root {
+  --bg: #f2efe9;
+  --ink: #171512;
+  --muted: #8a8478;
+  --line: rgba(23, 21, 18, 0.16);
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1.5rem 3rem;
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  background: rgba(242, 239, 233, 0.92);
+  backdrop-filter: blur(14px);
+  z-index: 10;
+}
+
+.logo {
+  font-family: "Playfair Display", serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+
+.logo-mark {
+  display: none;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.8rem;
+}
+
+.site-nav a {
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 0.74rem;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.site-nav a:hover,
+.site-nav .nav-cta {
+  color: var(--ink);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  padding: 4rem 3rem;
+  text-align: center;
+}
+
+.hero-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.kicker {
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+}
+
+.hero h1 {
+  font-family: "Playfair Display", serif;
+  font-weight: 400;
+  font-size: clamp(3.75rem, 9.5vw, 8rem);
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+}
+
+.hero h1 em {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.tagline {
+  margin: 2.25rem auto 0;
+  max-width: 440px;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.9;
+}
+
+.button {
+  display: inline-block;
+  margin-top: 2.75rem;
+  padding: 1rem 3rem;
+  background: var(--ink);
+  color: var(--bg);
+  text-decoration: none;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  transition: opacity 0.2s;
+}
+
+.button:hover {
+  opacity: 0.82;
+}
+
+/* ---------- Services ---------- */
+.services {
+  border-top: 1px solid var(--line);
+}
+
+.service {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 4.5rem 3rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.num {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--muted);
+  line-height: 2.9;
+}
+
+.service h2 {
+  font-family: "Playfair Display", serif;
+  font-weight: 500;
+  font-size: clamp(1.9rem, 3.8vw, 2.7rem);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+
+.service p {
+  color: var(--muted);
+  max-width: 540px;
+  line-height: 1.9;
+}
+
+/* ---------- Contact ---------- */
+.contact {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 9rem 3rem;
+  text-align: center;
+}
+
+.contact h2 {
+  font-family: "Playfair Display", serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(2.75rem, 6.5vw, 5rem);
+  margin-bottom: 1.25rem;
+}
+
+.contact p {
+  color: var(--muted);
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  padding: 2rem 3rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .site-header, .hero, .service, .contact { padding-left: 1.25rem; padding-right: 1.25rem; }
+  .service { grid-template-columns: 1fr; gap: 0.75rem; }
+}

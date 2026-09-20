@@ -1,0 +1,235 @@
+/* ============================================================
+   THEME: AURUM — engraved authority
+   The Noir palette evolved: black marble, antique gold,
+   Roman capitals carved like a bank facade.
+   ============================================================ */
+
+:root {
+  --bg: #0b0a08;
+  --bg-raised: #121008;
+  --ivory: #eae4d6;
+  --muted: #857e6d;
+  --gold: #b08d3f;
+  --gold-bright: #d4af5e;
+  --line: rgba(176, 141, 63, 0.28);
+}
+
+body {
+  background:
+    radial-gradient(ellipse 70% 45% at 50% -5%, rgba(176, 141, 63, 0.07), transparent),
+    var(--bg);
+  color: var(--ivory);
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--bg);
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1.4rem 3rem;
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  background: rgba(11, 10, 8, 0.92);
+  backdrop-filter: blur(14px);
+  z-index: 10;
+}
+
+.logo {
+  font-family: "Cinzel", serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+}
+
+.logo-mark {
+  color: var(--gold-bright);
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.8rem;
+}
+
+.site-nav a {
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.site-nav a:hover,
+.site-nav .nav-cta {
+  color: var(--gold-bright);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  padding: 4rem 3rem;
+  text-align: center;
+}
+
+.hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.kicker {
+  color: var(--gold-bright);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  margin-bottom: 2.25rem;
+}
+
+.kicker::before,
+.kicker::after {
+  content: "—";
+  color: var(--line);
+  margin: 0 1rem;
+}
+
+.hero h1 {
+  font-family: "Cinzel", serif;
+  font-weight: 500;
+  font-size: clamp(3.5rem, 9vw, 7.5rem);
+  line-height: 1.02;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.hero h1 em {
+  font-style: normal;
+  font-weight: 400;
+  display: block;
+  font-size: 0.52em;
+  letter-spacing: 0.3em;
+  margin-top: 0.6rem;
+  color: var(--gold-bright);
+}
+
+.tagline {
+  margin: 2.25rem auto 0;
+  max-width: 460px;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.9;
+}
+
+.button {
+  display: inline-block;
+  margin-top: 2.75rem;
+  padding: 1rem 3rem;
+  border: 1px solid var(--gold);
+  color: var(--gold-bright);
+  text-decoration: none;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  transition: all 0.25s;
+}
+
+.button:hover {
+  background: var(--gold);
+  color: var(--bg);
+}
+
+/* ---------- Services ---------- */
+.services {
+  border-top: 1px solid var(--line);
+}
+
+.service {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4.5rem 3rem;
+  border-bottom: 1px solid var(--line);
+  transition: background 0.3s;
+}
+
+.service:hover {
+  background: var(--bg-raised);
+}
+
+.num {
+  font-family: "Cinzel", serif;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  color: var(--gold-bright);
+  line-height: 2.8;
+}
+
+.service h2 {
+  font-family: "Cinzel", serif;
+  font-weight: 500;
+  font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+  line-height: 1.15;
+  letter-spacing: 0.03em;
+  margin-bottom: 1rem;
+}
+
+.service p {
+  color: var(--muted);
+  max-width: 560px;
+  line-height: 1.85;
+}
+
+/* ---------- Contact ---------- */
+.contact {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 9rem 3rem;
+  text-align: center;
+}
+
+.contact h2 {
+  font-family: "Cinzel", serif;
+  font-weight: 500;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  letter-spacing: 0.04em;
+  margin-bottom: 1.25rem;
+}
+
+.contact p {
+  color: var(--muted);
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  padding: 2rem 3rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .site-header, .hero, .service, .contact { padding-left: 1.25rem; padding-right: 1.25rem; }
+  .service { grid-template-columns: 1fr; gap: 0.75rem; }
+}
