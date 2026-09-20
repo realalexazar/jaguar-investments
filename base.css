@@ -28,6 +28,28 @@ a {
   color: inherit;
 }
 
+/* ---------- Aurum-specific enrichments hidden by default ----------
+   Themes that style these (aurum.css) override the display. This keeps
+   the older exploration themes rendering cleanly on the same HTML. */
+.hero-aside,
+.stats,
+.link-quiet,
+.footer-tag,
+.footer-contact .aside-label {
+  display: none;
+}
+
+.footer-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2.5rem;
+  align-items: baseline;
+}
+
+.footer-nav {
+  display: none;
+}
+
 /* ---------- Theme switcher (always visible, theme-agnostic) ---------- */
 .theme-switcher {
   position: fixed;

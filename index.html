@@ -6,9 +6,9 @@
   <title>Jaguar Investments</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" />
   <link rel="stylesheet" href="base.css" />
-  <link rel="stylesheet" href="themes/obsidian.css" id="theme-css" />
+  <link rel="stylesheet" href="themes/aurum.css" id="theme-css" />
 </head>
 <body>
 
@@ -19,7 +19,7 @@
       <a href="#capital-markets">Capital Markets</a>
       <a href="#real-estate-investments">Real Estate</a>
       <a href="#private-equity-investments">Private Equity</a>
-      <a href="#underwriting-consulting">Underwriting &amp; Consulting</a>
+      <a href="#underwriting-consulting">Underwriting</a>
       <a href="#research">Research</a>
       <a href="#property-management">Property Management</a>
       <a href="#contact" class="nav-cta">Contact</a>
@@ -31,10 +31,42 @@
     <!-- ============ HERO ============ -->
     <section class="hero">
       <div class="hero-inner">
-        <p class="kicker">Real Estate &mdash; Capital &middot; Investment &middot; Advisory</p>
-        <h1>Jaguar<br /><em>Investments</em></h1>
-        <p class="tagline">Institutional-grade real estate capital, investment, and advisory.</p>
-        <a href="#contact" class="button">Get in Touch</a>
+        <div class="hero-main">
+          <p class="kicker">Private Real Estate &amp; Alternative Investments</p>
+          <h1>Jaguar<br /><em>Investments</em></h1>
+          <p class="tagline">Institutional-grade real estate capital, investment, and advisory for principals who expect precision.</p>
+          <div class="hero-actions">
+            <a href="#contact" class="button">Get in Touch</a>
+            <a href="#capital-markets" class="link-quiet">Explore Capabilities</a>
+          </div>
+        </div>
+        <aside class="hero-aside">
+          <p class="aside-label">Capabilities</p>
+          <ol>
+            <li><a href="#capital-markets">Capital Markets</a></li>
+            <li><a href="#real-estate-investments">Real Estate Investments</a></li>
+            <li><a href="#private-equity-investments">Private Equity Investments</a></li>
+            <li><a href="#underwriting-consulting">Underwriting &amp; Consulting</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#property-management">Property Management</a></li>
+          </ol>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============ STATS (placeholder figures) ============ -->
+    <section class="stats">
+      <div class="stat">
+        <span class="stat-value">$2.4B+</span>
+        <span class="stat-label">Transactions Advised</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">20+</span>
+        <span class="stat-label">Years of Experience</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">14</span>
+        <span class="stat-label">Markets Nationwide</span>
       </div>
     </section>
 
@@ -102,7 +134,25 @@
   </main>
 
   <footer class="site-footer">
-    <p>&copy; 2026 Jaguar Investments. All rights reserved.</p>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <p class="footer-wordmark">Jaguar Investments</p>
+        <p class="footer-tag">Real estate capital, investment &amp; advisory.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="#capital-markets">Capital Markets</a>
+        <a href="#real-estate-investments">Real Estate Investments</a>
+        <a href="#private-equity-investments">Private Equity Investments</a>
+        <a href="#underwriting-consulting">Underwriting &amp; Consulting</a>
+        <a href="#research">Research</a>
+        <a href="#property-management">Property Management</a>
+      </nav>
+      <div class="footer-contact">
+        <p class="aside-label">Inquiries</p>
+        <a href="mailto:hello@jaguarinvestments.com">hello@jaguarinvestments.com</a>
+      </div>
+    </div>
+    <p class="footer-legal">&copy; 2026 Jaguar Investments. All rights reserved.</p>
   </footer>
 
   <!-- ============ THEME SWITCHER (dev tool for shopping aesthetics) ============ -->
@@ -125,7 +175,7 @@
       var buttons = document.querySelectorAll(".theme-switcher button");
 
       function setTheme(name) {
-        if (!hrefs[name]) name = "obsidian";
+        if (!hrefs[name]) name = "aurum";
         link.setAttribute("href", hrefs[name]);
         document.documentElement.setAttribute("data-theme", name);
         try { localStorage.setItem("jaguar-theme", name); } catch (e) {}
@@ -141,7 +191,7 @@
       var param = new URLSearchParams(location.search).get("theme");
       var saved = null;
       try { saved = localStorage.getItem("jaguar-theme"); } catch (e) {}
-      setTheme(param || saved || "obsidian");
+      setTheme(param || saved || "aurum");
     })();
   </script>
 
