@@ -1,0 +1,236 @@
+/* ============================================================
+   THEME: JAGUAR — noir evolved
+   Green-black base, jade accent, roman serif display.
+   Black jaguar, emerald eyes. Fonts loaded via <link> in HTML.
+   ============================================================ */
+
+:root {
+  --bg: #090d0b;
+  --bg-raised: #0e1512;
+  --text: #e8efe9;
+  --muted: #7f8d85;
+  --jade: #35b184;
+  --jade-soft: rgba(53, 177, 132, 0.14);
+  --line: rgba(53, 177, 132, 0.22);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Manrope", sans-serif;
+  font-weight: 300;
+}
+
+::selection {
+  background: var(--jade);
+  color: var(--bg);
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1.5rem 3rem;
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  background: rgba(9, 13, 11, 0.88);
+  backdrop-filter: blur(12px);
+  z-index: 10;
+}
+
+.logo {
+  font-family: "Marcellus", serif;
+  font-size: 1.25rem;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+}
+
+.logo-mark {
+  display: inline-block;
+  color: var(--jade);
+  border: 1px solid var(--line);
+  background: var(--jade-soft);
+  width: 1.9rem;
+  height: 1.9rem;
+  line-height: 1.85rem;
+  text-align: center;
+  border-radius: 4px;
+  margin-right: 0.4rem;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.75rem;
+}
+
+.site-nav a {
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.site-nav a:hover,
+.site-nav .nav-cta {
+  color: var(--jade);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  padding: 4rem 3rem;
+  background:
+    radial-gradient(ellipse 55% 45% at 80% 15%, rgba(53, 177, 132, 0.13), transparent),
+    radial-gradient(ellipse 45% 55% at 10% 95%, rgba(53, 177, 132, 0.06), transparent);
+}
+
+.hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.kicker {
+  color: var(--jade);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  margin-bottom: 1.75rem;
+}
+
+.hero h1 {
+  font-family: "Marcellus", serif;
+  font-weight: 400;
+  font-size: clamp(3.75rem, 10.5vw, 8.5rem);
+  line-height: 0.98;
+  letter-spacing: 0.01em;
+}
+
+.hero h1 em {
+  font-style: normal;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--jade);
+}
+
+.tagline {
+  margin-top: 2rem;
+  max-width: 460px;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.button {
+  display: inline-block;
+  margin-top: 2.75rem;
+  padding: 0.95rem 2.5rem;
+  border: 1px solid var(--jade);
+  color: var(--jade);
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  transition: all 0.25s;
+}
+
+.button:hover {
+  background: var(--jade);
+  color: var(--bg);
+  box-shadow: 0 8px 30px rgba(53, 177, 132, 0.25);
+}
+
+/* ---------- Services ---------- */
+.services {
+  border-top: 1px solid var(--line);
+}
+
+.service {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4.5rem 3rem;
+  border-bottom: 1px solid var(--line);
+  border-left: 2px solid transparent;
+  transition: background 0.3s, border-left-color 0.3s;
+}
+
+.service:hover {
+  background: var(--bg-raised);
+  border-left-color: var(--jade);
+}
+
+.num {
+  font-family: "Marcellus", serif;
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  color: var(--jade);
+  line-height: 2.6;
+}
+
+.num::before {
+  content: "/ ";
+  color: var(--muted);
+}
+
+.service h2 {
+  font-family: "Marcellus", serif;
+  font-weight: 400;
+  font-size: 2.3rem;
+  line-height: 1.12;
+  margin-bottom: 1rem;
+}
+
+.service p {
+  color: var(--muted);
+  max-width: 560px;
+  line-height: 1.8;
+}
+
+/* ---------- Contact ---------- */
+.contact {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 8rem 3rem;
+  text-align: center;
+}
+
+.contact h2 {
+  font-family: "Marcellus", serif;
+  font-weight: 400;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  margin-bottom: 1rem;
+}
+
+.contact p {
+  color: var(--muted);
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  padding: 2rem 3rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.76rem;
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .site-header, .hero, .service, .contact { padding-left: 1.25rem; padding-right: 1.25rem; }
+  .service { grid-template-columns: 1fr; gap: 0.75rem; }
+}
