@@ -1,29 +1,31 @@
 /* ============================================================
-   THEME: JAGUAR — noir evolved
-   Green-black base, jade accent, roman serif display.
-   Black jaguar, emerald eyes. Fonts loaded via <link> in HTML.
+   THEME: JAGUAR — predator noir
+   Pitch black. Bone white. Blood crimson.
+   Razor-sharp Bodoni display type. No soft edges anywhere.
+   Fonts loaded via <link> in index.html.
    ============================================================ */
 
 :root {
-  --bg: #090d0b;
-  --bg-raised: #0e1512;
-  --text: #e8efe9;
-  --muted: #7f8d85;
-  --jade: #35b184;
-  --jade-soft: rgba(53, 177, 132, 0.14);
-  --line: rgba(53, 177, 132, 0.22);
+  --bg: #050505;
+  --bg-raised: #0c0b0b;
+  --bone: #e7e2d8;
+  --muted: #6e6a63;
+  --blood: #b3111c;
+  --blood-bright: #e0212e;
+  --line: rgba(231, 226, 216, 0.12);
+  --line-blood: rgba(179, 17, 28, 0.45);
 }
 
 body {
   background: var(--bg);
-  color: var(--text);
-  font-family: "Manrope", sans-serif;
+  color: var(--bone);
+  font-family: "Inter", sans-serif;
   font-weight: 300;
 }
 
 ::selection {
-  background: var(--jade);
-  color: var(--bg);
+  background: var(--blood);
+  color: var(--bone);
 }
 
 /* ---------- Header ---------- */
@@ -33,123 +35,125 @@ body {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 1rem;
-  padding: 1.5rem 3rem;
+  padding: 1.4rem 3rem;
   border-bottom: 1px solid var(--line);
   position: sticky;
   top: 0;
-  background: rgba(9, 13, 11, 0.88);
-  backdrop-filter: blur(12px);
+  background: rgba(5, 5, 5, 0.92);
+  backdrop-filter: blur(14px);
   z-index: 10;
 }
 
 .logo {
-  font-family: "Marcellus", serif;
-  font-size: 1.25rem;
-  letter-spacing: 0.05em;
+  font-family: "Bodoni Moda", serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
   text-decoration: none;
 }
 
 .logo-mark {
-  display: inline-block;
-  color: var(--jade);
-  border: 1px solid var(--line);
-  background: var(--jade-soft);
-  width: 1.9rem;
-  height: 1.9rem;
-  line-height: 1.85rem;
-  text-align: center;
-  border-radius: 4px;
-  margin-right: 0.4rem;
+  color: var(--blood-bright);
+  margin-right: 0.1rem;
 }
 
 .site-nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.75rem;
+  gap: 1.9rem;
 }
 
 .site-nav a {
   text-decoration: none;
   color: var(--muted);
-  font-size: 0.76rem;
+  font-size: 0.72rem;
   font-weight: 500;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  transition: color 0.2s;
+  transition: color 0.15s;
 }
 
-.site-nav a:hover,
+.site-nav a:hover {
+  color: var(--bone);
+}
+
 .site-nav .nav-cta {
-  color: var(--jade);
+  color: var(--blood-bright);
+}
+
+.site-nav .nav-cta:hover {
+  color: var(--blood-bright);
 }
 
 /* ---------- Hero ---------- */
 .hero {
-  min-height: 88vh;
+  min-height: 90vh;
   display: flex;
   align-items: center;
   padding: 4rem 3rem;
+  position: relative;
   background:
-    radial-gradient(ellipse 55% 45% at 80% 15%, rgba(53, 177, 132, 0.13), transparent),
-    radial-gradient(ellipse 45% 55% at 10% 95%, rgba(53, 177, 132, 0.06), transparent);
+    linear-gradient(180deg, transparent 60%, rgba(179, 17, 28, 0.04)),
+    radial-gradient(ellipse 70% 55% at 50% 120%, rgba(179, 17, 28, 0.10), transparent);
 }
 
 .hero-inner {
-  max-width: 1100px;
+  max-width: 1160px;
   margin: 0 auto;
   width: 100%;
 }
 
 .kicker {
-  color: var(--jade);
-  font-size: 0.74rem;
-  font-weight: 500;
-  letter-spacing: 0.32em;
+  color: var(--blood-bright);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.42em;
   text-transform: uppercase;
-  margin-bottom: 1.75rem;
+  margin-bottom: 2rem;
 }
 
 .hero h1 {
-  font-family: "Marcellus", serif;
-  font-weight: 400;
-  font-size: clamp(3.75rem, 10.5vw, 8.5rem);
-  line-height: 0.98;
-  letter-spacing: 0.01em;
+  font-family: "Bodoni Moda", serif;
+  font-weight: 500;
+  font-size: clamp(4rem, 11.5vw, 10rem);
+  line-height: 0.92;
+  letter-spacing: -0.01em;
 }
 
 .hero h1 em {
-  font-style: normal;
-  color: transparent;
-  -webkit-text-stroke: 1px var(--jade);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--blood-bright);
 }
 
 .tagline {
-  margin-top: 2rem;
-  max-width: 460px;
+  margin-top: 2.25rem;
+  max-width: 440px;
   color: var(--muted);
-  font-size: 1.05rem;
-  line-height: 1.8;
+  font-size: 1rem;
+  line-height: 1.9;
+  border-left: 1px solid var(--line-blood);
+  padding-left: 1.25rem;
 }
 
 .button {
   display: inline-block;
-  margin-top: 2.75rem;
-  padding: 0.95rem 2.5rem;
-  border: 1px solid var(--jade);
-  color: var(--jade);
+  margin-top: 3rem;
+  padding: 1rem 2.75rem;
+  border: 1px solid var(--bone);
+  color: var(--bone);
   text-decoration: none;
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  border-radius: 2px;
-  transition: all 0.25s;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
 }
 
 .button:hover {
-  background: var(--jade);
-  color: var(--bg);
-  box-shadow: 0 8px 30px rgba(53, 177, 132, 0.25);
+  border-color: var(--blood-bright);
+  background: var(--blood);
+  color: var(--bone);
 }
 
 /* ---------- Services ---------- */
@@ -159,65 +163,96 @@ body {
 
 .service {
   display: grid;
-  grid-template-columns: 140px 1fr;
+  grid-template-columns: 150px 1fr;
   gap: 2rem;
-  max-width: 1100px;
+  max-width: 1160px;
   margin: 0 auto;
-  padding: 4.5rem 3rem;
+  padding: 4.75rem 3rem;
   border-bottom: 1px solid var(--line);
-  border-left: 2px solid transparent;
-  transition: background 0.3s, border-left-color 0.3s;
+  position: relative;
+  transition: background 0.25s;
+}
+
+.service::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--blood-bright);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.3s ease;
 }
 
 .service:hover {
   background: var(--bg-raised);
-  border-left-color: var(--jade);
+}
+
+.service:hover::after {
+  transform: scaleY(1);
 }
 
 .num {
-  font-family: "Marcellus", serif;
-  font-size: 1rem;
-  letter-spacing: 0.2em;
-  color: var(--jade);
-  line-height: 2.6;
-}
-
-.num::before {
-  content: "/ ";
-  color: var(--muted);
+  font-family: "Bodoni Moda", serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--blood-bright);
+  line-height: 2.4;
 }
 
 .service h2 {
-  font-family: "Marcellus", serif;
-  font-weight: 400;
-  font-size: 2.3rem;
-  line-height: 1.12;
+  font-family: "Bodoni Moda", serif;
+  font-weight: 500;
+  font-size: 2.6rem;
+  line-height: 1.05;
+  letter-spacing: 0;
   margin-bottom: 1rem;
+}
+
+.service:hover h2 {
+  color: #ffffff;
 }
 
 .service p {
   color: var(--muted);
   max-width: 560px;
-  line-height: 1.8;
+  line-height: 1.85;
 }
 
 /* ---------- Contact ---------- */
 .contact {
-  max-width: 1100px;
+  max-width: 1160px;
   margin: 0 auto;
-  padding: 8rem 3rem;
+  padding: 9rem 3rem;
   text-align: center;
 }
 
+.contact .kicker {
+  margin-bottom: 1.25rem;
+}
+
 .contact h2 {
-  font-family: "Marcellus", serif;
-  font-weight: 400;
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  margin-bottom: 1rem;
+  font-family: "Bodoni Moda", serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  margin-bottom: 1.25rem;
 }
 
 .contact p {
   color: var(--muted);
+}
+
+.contact .button {
+  border-color: var(--blood-bright);
+  color: var(--blood-bright);
+}
+
+.contact .button:hover {
+  background: var(--blood);
+  color: var(--bone);
 }
 
 /* ---------- Footer ---------- */
@@ -225,8 +260,9 @@ body {
   padding: 2rem 3rem;
   border-top: 1px solid var(--line);
   color: var(--muted);
-  font-size: 0.76rem;
-  letter-spacing: 0.1em;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   text-align: center;
 }
 
