@@ -137,6 +137,8 @@ def head(title, description, path=""):
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="The Jaguar Investments shield" />
   <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="favicon.ico" sizes="48x48" />
+  <link rel="icon" href="images/favicon-96.png" type="image/png" sizes="96x96" />
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
   <script>try{{if(!sessionStorage.getItem("jaguar-seen")){{document.documentElement.classList.add("intro");sessionStorage.setItem("jaguar-seen","1")}}}}catch(e){{}}</script>
@@ -355,6 +357,7 @@ def main():
     write("images/favicon.svg", favicon_svg())
     write("sketches/og-card.html", og_card_html())
     write("sketches/icon-card.html", icon_card_html())
+    write("sketches/favicon-card.html", favicon_card_html())
     render_images(root)
 
     # Remove retired Transactions page if present
@@ -368,17 +371,18 @@ def main():
 
 # ---------- Share card and icons ----------
 
-def shield_svg(width, height, extra=""):
+def shield_svg(width, height, extra="", fill="none"):
     return (
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" width="{width}" height="{height}"{extra}>'
-        f'<path d="{SHIELD_OUTER}" fill="none" stroke="{INK}" stroke-width="6" />'
+        f'<path d="{SHIELD_OUTER}" fill="{fill}" stroke="{INK}" stroke-width="6" />'
         f'<path d="{SHIELD_INNER}" fill="none" stroke="{INK}" stroke-width="1.5" />'
         f'<g fill="{INK}">{FANGS}</g></svg>'
     )
 
 
 def favicon_svg():
-    return shield_svg(100, 120) + "\n"
+    # Paper fill keeps the mark legible on dark browser tabs
+    return shield_svg(100, 120, fill=PAPER) + "\n"
 
 
 def og_card_html():
@@ -412,6 +416,18 @@ def icon_card_html():
 """
 
 
+def favicon_card_html():
+    # Tab icons are tiny, so the shield fills the square on a transparent ground
+    return f"""<!DOCTYPE html>
+<html><head><meta charset="UTF-8" />
+<style>
+  html, body {{ margin: 0; width: 192px; height: 192px; overflow: hidden; background: transparent; }}
+  body {{ display: flex; align-items: center; justify-content: center; }}
+</style></head>
+<body>{shield_svg(158, 190, fill=PAPER)}</body></html>
+"""
+
+
 def render_images(root):
     """Rasterise the share card and touch icon with headless Chrome, if installed."""
     chrome = next((c for c in (
@@ -422,16 +438,27 @@ def render_images(root):
     if not chrome:
         print("Chrome not found; skipped images/og.png and images/apple-touch-icon.png")
         return
-    for src, out, size in (
-        ("sketches/og-card.html", "images/og.png", "1200,630"),
-        ("sketches/icon-card.html", "images/apple-touch-icon.png", "180,180"),
+    for src, out, size, extra in (
+        ("sketches/og-card.html", "images/og.png", "1200,630", []),
+        ("sketches/icon-card.html", "images/apple-touch-icon.png", "180,180", []),
+        ("sketches/favicon-card.html", "images/favicon-192.png", "192,192",
+         ["--default-background-color=00000000"]),
     ):
         subprocess.run([
             chrome, "--headless=new", "--disable-gpu", "--hide-scrollbars",
-            f"--window-size={size}", "--virtual-time-budget=5000",
+            f"--window-size={size}", "--virtual-time-budget=5000", *extra,
             f"--screenshot={os.path.join(root, out)}",
             "file://" + os.path.join(root, src),
         ], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+    # Downscale for tabs; sips ships with macOS
+    big = os.path.join(root, "images/favicon-192.png")
+    if shutil.which("sips"):
+        for px, out in ((96, "images/favicon-96.png"), (48, "favicon.ico")):
+            fmt = ["-s", "format", "ico"] if out.endswith(".ico") else []
+            subprocess.run(["sips", "-z", str(px), str(px), *fmt, big, "--out", os.path.join(root, out)],
+                           check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    os.remove(big)
 
 
 TYPE_SPECIMEN = """<!DOCTYPE html>
