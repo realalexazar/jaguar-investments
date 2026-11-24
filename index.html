@@ -4,196 +4,75 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jaguar Investments</title>
+  <meta name="description" content="Jaguar Investments. Investment and advisory across real estate and private capital." />
+  <script>try{if(!sessionStorage.getItem("jaguar-seen")){document.documentElement.classList.add("intro");sessionStorage.setItem("jaguar-seen","1")}}catch(e){}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" />
-  <link rel="stylesheet" href="base.css" />
-  <link rel="stylesheet" href="themes/aurum.css" id="theme-css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&amp;family=Libre+Caslon+Text:ital@0;1&amp;family=EB+Garamond:ital@1&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&amp;family=Inter:wght@400;500;600&amp;display=swap" />
+  <link rel="stylesheet" href="base.css?v=10" />
+  <link rel="stylesheet" href="themes/merchant.css?v=10" />
 </head>
 <body>
 
-  <!-- ============ HEADER / NAV ============ -->
+  <div class="watermark" aria-hidden="true"></div>
+
+  <svg class="defs" aria-hidden="true" focusable="false">
+    <filter id="ink">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="3" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.6" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+    <filter id="ink-fine">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="3" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="0.8" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+    <symbol id="shield" viewBox="0 0 100 120">
+      <path d="M50 5 H95 V52 C95 85 74 105 50 116 C26 105 5 85 5 52 V5 H50" fill="none" stroke="currentColor" stroke-width="6" />
+      <path d="M50 14 H86 V52 C86 78 70 95 50 105 C30 95 14 78 14 52 V14 H50" fill="none" stroke="currentColor" stroke-width="1.5" />
+      <g fill="currentColor"><polygon points="14,14 38,14 26,74" /><polygon points="38,14 62,14 50,74" /><polygon points="62,14 86,14 74,74" /></g>
+    </symbol>
+  </svg>
+
   <header class="site-header">
-    <a class="logo" href="#top"><span class="logo-mark">J</span> Jaguar Investments</a>
-    <nav class="site-nav">
-      <a href="#capital-markets">Capital Markets</a>
-      <a href="#real-estate-investments">Real Estate</a>
-      <a href="#private-equity-investments">Private Equity</a>
-      <a href="#underwriting-consulting">Underwriting</a>
-      <a href="#research">Research</a>
-      <a href="#property-management">Property Management</a>
-      <a href="#contact" class="nav-cta">Contact</a>
+    <a class="logo" href="index.html" aria-label="Jaguar Investments">
+      <svg class="shield shield--nav"><use href="#shield" /></svg>
+      <span class="logo-word"><span class="brand-j">J</span>aguar</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Contents</button>
+    <nav class="site-nav" id="site-nav" aria-label="Contents">
+      <a href="capital-markets.html" data-n="I"><span>Capital Markets</span></a>
+      <a href="real-estate.html" data-n="II"><span>Real Estate</span></a>
+      <a href="private-equity.html" data-n="III"><span>Private Equity</span></a>
+      <a href="underwriting.html" data-n="IV"><span>Underwriting &amp; Consulting</span></a>
+      <a href="research.html" data-n="V"><span>Research</span></a>
+      <a href="asset-management.html" data-n="VI"><span>Asset Management</span></a>
+      <a href="about.html" data-n="VII"><span>About</span></a>
+      <a href="investors.html" data-n="VIII"><span>Investors</span></a>
+      <a href="contact.html" data-n="IX" class="nav-cta"><span>Contact</span></a>
     </nav>
   </header>
 
-  <main id="top">
-
-    <!-- ============ HERO ============ -->
-    <section class="hero">
-      <div class="hero-inner">
-        <div class="hero-main">
-          <p class="kicker">Private Real Estate &amp; Alternative Investments</p>
-          <h1>Jaguar<br /><em>Investments</em></h1>
-          <p class="tagline">Institutional-grade real estate capital, investment, and advisory for principals who expect precision.</p>
-          <div class="hero-actions">
-            <a href="#contact" class="button">Get in Touch</a>
-            <a href="#capital-markets" class="link-quiet">Explore Capabilities</a>
-          </div>
-        </div>
-        <aside class="hero-aside">
-          <p class="aside-label">Capabilities</p>
-          <ol>
-            <li><a href="#capital-markets">Capital Markets</a></li>
-            <li><a href="#real-estate-investments">Real Estate Investments</a></li>
-            <li><a href="#private-equity-investments">Private Equity Investments</a></li>
-            <li><a href="#underwriting-consulting">Underwriting &amp; Consulting</a></li>
-            <li><a href="#research">Research</a></li>
-            <li><a href="#property-management">Property Management</a></li>
-          </ol>
-        </aside>
-      </div>
+  <main>
+    <section class="leaf leaf--cover">
+      <svg class="shield shield--hero shield--draw" viewBox="0 0 100 120" aria-hidden="true">
+        <path pathLength="1" d="M50 5 H95 V52 C95 85 74 105 50 116 C26 105 5 85 5 52 V5 H50" fill="none" stroke="currentColor" stroke-width="6" />
+        <path pathLength="1" d="M50 14 H86 V52 C86 78 70 95 50 105 C30 95 14 78 14 52 V14 H50" fill="none" stroke="currentColor" stroke-width="1.5" />
+        <g class="fangs" fill="currentColor"><polygon points="14,14 38,14 26,74" /><polygon points="38,14 62,14 50,74" /><polygon points="62,14 86,14 74,74" /></g>
+      </svg>
+      <h1 class="brand"><span class="brand-j">J</span>aguar</h1>
+      <p class="hero-line">Investment and advisory across real estate and private capital.</p>
+      <a href="contact.html" class="button">Contact Us</a>
     </section>
-
-    <!-- ============ STATS (placeholder figures) ============ -->
-    <section class="stats">
-      <div class="stat">
-        <span class="stat-value">$2.4B+</span>
-        <span class="stat-label">Transactions Advised</span>
-      </div>
-      <div class="stat">
-        <span class="stat-value">20+</span>
-        <span class="stat-label">Years of Experience</span>
-      </div>
-      <div class="stat">
-        <span class="stat-value">14</span>
-        <span class="stat-label">Markets Nationwide</span>
-      </div>
-    </section>
-
-    <!-- ============ CORE SERVICES ============ -->
-    <div class="services">
-
-      <section id="capital-markets" class="service">
-        <span class="num">01</span>
-        <div class="service-copy">
-          <h2>Capital Markets</h2>
-          <p>Placeholder copy. Debt and equity placement, financing strategy, and lender relationships.</p>
-        </div>
-      </section>
-
-      <section id="real-estate-investments" class="service">
-        <span class="num">02</span>
-        <div class="service-copy">
-          <h2>Real Estate Investments</h2>
-          <p>Placeholder copy. Direct acquisitions, joint ventures, and asset management across property types.</p>
-        </div>
-      </section>
-
-      <section id="private-equity-investments" class="service">
-        <span class="num">03</span>
-        <div class="service-copy">
-          <h2>Private Equity Investments</h2>
-          <p>Placeholder copy. Direct and co-investments in operating companies and real-asset platforms.</p>
-        </div>
-      </section>
-
-      <section id="underwriting-consulting" class="service">
-        <span class="num">04</span>
-        <div class="service-copy">
-          <h2>Underwriting &amp; Consulting</h2>
-          <p>Placeholder copy. Deal-level underwriting, due diligence, and advisory services.</p>
-        </div>
-      </section>
-
-      <section id="research" class="service">
-        <span class="num">05</span>
-        <div class="service-copy">
-          <h2>Research</h2>
-          <p>Placeholder copy. Market intelligence, submarket analysis, and thought leadership.</p>
-        </div>
-      </section>
-
-      <section id="property-management" class="service">
-        <span class="num">06</span>
-        <div class="service-copy">
-          <h2>Property Management</h2>
-          <p>Placeholder copy. Operations, leasing, and asset-level performance.</p>
-        </div>
-      </section>
-
-    </div>
-
-    <!-- ============ CONTACT ============ -->
-    <section id="contact" class="contact">
-      <p class="kicker">Contact</p>
-      <h2>Let&rsquo;s talk.</h2>
-      <p>Placeholder copy. Email, phone, and office location go here.</p>
-      <a href="mailto:hello@jaguarinvestments.com" class="button">hello@jaguarinvestments.com</a>
-    </section>
-
   </main>
 
   <footer class="site-footer">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <p class="footer-wordmark">Jaguar Investments</p>
-        <p class="footer-tag">Real estate capital, investment &amp; advisory.</p>
-      </div>
-      <nav class="footer-nav" aria-label="Footer">
-        <a href="#capital-markets">Capital Markets</a>
-        <a href="#real-estate-investments">Real Estate Investments</a>
-        <a href="#private-equity-investments">Private Equity Investments</a>
-        <a href="#underwriting-consulting">Underwriting &amp; Consulting</a>
-        <a href="#research">Research</a>
-        <a href="#property-management">Property Management</a>
-      </nav>
-      <div class="footer-contact">
-        <p class="aside-label">Inquiries</p>
-        <a href="mailto:hello@jaguarinvestments.com">hello@jaguarinvestments.com</a>
-      </div>
-    </div>
-    <p class="footer-legal">&copy; 2026 Jaguar Investments. All rights reserved.</p>
+    <a class="footer-mark" href="index.html">
+      <svg class="shield shield--nav" aria-hidden="true"><use href="#shield" /></svg>
+      <span class="footer-wordmark">Jaguar Investments Group</span>
+    </a>
+    <a class="footer-email" href="mailto:contact@jaguarinv.com">contact@jaguarinv.com</a>
+    <p class="footer-legal">&copy; 2026 Jaguar Investments Group</p>
   </footer>
 
-  <!-- ============ THEME SWITCHER (dev tool for shopping aesthetics) ============ -->
-  <div class="theme-switcher" aria-label="Theme switcher">
-    <button data-theme="obsidian">Obsidian</button>
-    <button data-theme="aurum">Aurum</button>
-    <button data-theme="graphite">Graphite</button>
-    <button data-theme="porcelain">Porcelain</button>
-  </div>
-
-  <script>
-    (function () {
-      var hrefs = {
-        obsidian: "themes/obsidian.css",
-        aurum: "themes/aurum.css",
-        graphite: "themes/graphite.css",
-        porcelain: "themes/porcelain.css"
-      };
-      var link = document.getElementById("theme-css");
-      var buttons = document.querySelectorAll(".theme-switcher button");
-
-      function setTheme(name) {
-        if (!hrefs[name]) name = "aurum";
-        link.setAttribute("href", hrefs[name]);
-        document.documentElement.setAttribute("data-theme", name);
-        try { localStorage.setItem("jaguar-theme", name); } catch (e) {}
-        buttons.forEach(function (b) {
-          b.classList.toggle("active", b.dataset.theme === name);
-        });
-      }
-
-      buttons.forEach(function (b) {
-        b.addEventListener("click", function () { setTheme(b.dataset.theme); });
-      });
-
-      var param = new URLSearchParams(location.search).get("theme");
-      var saved = null;
-      try { saved = localStorage.getItem("jaguar-theme"); } catch (e) {}
-      setTheme(param || saved || "aurum");
-    })();
-  </script>
-
+  <script src="site.js?v=2"></script>
 </body>
 </html>

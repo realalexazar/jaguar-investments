@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Real Estate | Jaguar Investments</title>
+  <meta name="description" content="We acquire, recapitalize, and co-invest in commercial real estate, on our own account and alongside partners." />
+  <script>try{if(!sessionStorage.getItem("jaguar-seen")){document.documentElement.classList.add("intro");sessionStorage.setItem("jaguar-seen","1")}}catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&amp;family=Libre+Caslon+Text:ital@0;1&amp;family=EB+Garamond:ital@1&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&amp;family=Inter:wght@400;500;600&amp;display=swap" />
+  <link rel="stylesheet" href="base.css?v=10" />
+  <link rel="stylesheet" href="themes/merchant.css?v=10" />
+</head>
+<body>
+
+  <div class="watermark" aria-hidden="true"></div>
+
+  <svg class="defs" aria-hidden="true" focusable="false">
+    <filter id="ink">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="3" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.6" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+    <filter id="ink-fine">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="3" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="0.8" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+    <symbol id="shield" viewBox="0 0 100 120">
+      <path d="M50 5 H95 V52 C95 85 74 105 50 116 C26 105 5 85 5 52 V5 H50" fill="none" stroke="currentColor" stroke-width="6" />
+      <path d="M50 14 H86 V52 C86 78 70 95 50 105 C30 95 14 78 14 52 V14 H50" fill="none" stroke="currentColor" stroke-width="1.5" />
+      <g fill="currentColor"><polygon points="14,14 38,14 26,74" /><polygon points="38,14 62,14 50,74" /><polygon points="62,14 86,14 74,74" /></g>
+    </symbol>
+  </svg>
+
+  <header class="site-header">
+    <a class="logo" href="index.html" aria-label="Jaguar Investments">
+      <svg class="shield shield--nav"><use href="#shield" /></svg>
+      <span class="logo-word"><span class="brand-j">J</span>aguar</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Contents</button>
+    <nav class="site-nav" id="site-nav" aria-label="Contents">
+      <a href="capital-markets.html" data-n="I"><span>Capital Markets</span></a>
+      <a href="real-estate.html" data-n="II" aria-current="page"><span>Real Estate</span></a>
+      <a href="private-equity.html" data-n="III"><span>Private Equity</span></a>
+      <a href="underwriting.html" data-n="IV"><span>Underwriting &amp; Consulting</span></a>
+      <a href="research.html" data-n="V"><span>Research</span></a>
+      <a href="asset-management.html" data-n="VI"><span>Asset Management</span></a>
+      <a href="about.html" data-n="VII"><span>About</span></a>
+      <a href="investors.html" data-n="VIII"><span>Investors</span></a>
+      <a href="contact.html" data-n="IX" class="nav-cta"><span>Contact</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="leaf leaf--tall">
+      <p class="leaf-num">II</p>
+      <h1 class="brand brand--page">Real Estate</h1>
+      <p class="page-copy">We acquire, recapitalize, and co-invest in commercial real estate, on our own account and alongside partners.</p>
+      <a href="contact.html" class="button">Contact Us</a>
+
+      <div class="dossier">
+        <section class="dossier-block" aria-labelledby="tx-heading">
+          <h2 id="tx-heading" class="dossier-label">Transactions</h2>
+          <p class="dossier-note">Appear as a matter of record only.</p>
+          <div class="notices notices--compact">
+        <article class="notice">
+          <p class="notice-type">Senior Loan</p>
+          <p class="notice-amount">$00,000,000</p>
+          <p class="notice-name">Property Name<br />City, State</p>
+          <p class="notice-role">Jaguar Investments<br />arranged the financing</p>
+          <p class="notice-date">Month Year</p>
+        </article>
+          </div>
+        </section>
+        <section class="dossier-block" aria-labelledby="cs-heading">
+          <h2 id="cs-heading" class="dossier-label">Case Studies</h2>
+          <div class="studies">
+        <article class="study">
+          <p class="notice-type">Case Study</p>
+          <p class="study-name">Property Name</p>
+          <p class="study-place">City, State</p>
+          <p class="study-copy">Brief summary of the mandate and outcome goes here.</p>
+          <p class="notice-date">Month Year</p>
+        </article>
+          </div>
+        </section>
+      </div>
+      <nav class="leaf-nav" aria-label="Previous and next"><a class="prev" href="capital-markets.html">&larr; Capital Markets</a><a class="next" href="private-equity.html">Private Equity &rarr;</a></nav>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="footer-mark" href="index.html">
+      <svg class="shield shield--nav" aria-hidden="true"><use href="#shield" /></svg>
+      <span class="footer-wordmark">Jaguar Investments Group</span>
+    </a>
+    <a class="footer-email" href="mailto:contact@jaguarinv.com">contact@jaguarinv.com</a>
+    <p class="footer-legal">&copy; 2026 Jaguar Investments Group</p>
+  </footer>
+
+  <script src="site.js?v=2"></script>
+</body>
+</html>
