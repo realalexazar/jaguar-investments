@@ -6,8 +6,12 @@ images/border.svg are outputs: edit this file, not them.
 """
 import math
 import os
+import shutil
+import subprocess
 
 INK = "#12100d"
+PAPER = "#ece7dc"
+SITE = "https://jaguarinv.com"
 EMAIL = "contact@jaguarinv.com"
 ROMAN = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"]
 
@@ -113,7 +117,7 @@ def border_svg():
 
 # ---------- Pages ----------
 
-def head(title, description):
+def head(title, description, path=""):
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -121,6 +125,20 @@ def head(title, description):
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   <meta name="description" content="{description}" />
+  <meta name="theme-color" content="{PAPER}" />
+  <link rel="canonical" href="{SITE}/{path}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Jaguar Investments" />
+  <meta property="og:title" content="{title}" />
+  <meta property="og:description" content="{description}" />
+  <meta property="og:url" content="{SITE}/{path}" />
+  <meta property="og:image" content="{SITE}/images/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="The Jaguar Investments shield" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
   <script>try{{if(!sessionStorage.getItem("jaguar-seen")){{document.documentElement.classList.add("intro");sessionStorage.setItem("jaguar-seen","1")}}}}catch(e){{}}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -331,8 +349,13 @@ def main():
         description = copy or title
         write(
             f"{slug}.html",
-            head(f"{title} | Jaguar Investments", description) + header(slug) + page(i) + FOOTER,
+            head(f"{title} | Jaguar Investments", description, f"{slug}.html") + header(slug) + page(i) + FOOTER,
         )
+
+    write("images/favicon.svg", favicon_svg())
+    write("sketches/og-card.html", og_card_html())
+    write("sketches/icon-card.html", icon_card_html())
+    render_images(root)
 
     # Remove retired Transactions page if present
     old = os.path.join(root, "transactions.html")
@@ -341,6 +364,74 @@ def main():
 
     # Italic type specimen (preview only; not linked from the site)
     write("sketches/type.html", TYPE_SPECIMEN)
+
+
+# ---------- Share card and icons ----------
+
+def shield_svg(width, height, extra=""):
+    return (
+        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" width="{width}" height="{height}"{extra}>'
+        f'<path d="{SHIELD_OUTER}" fill="none" stroke="{INK}" stroke-width="6" />'
+        f'<path d="{SHIELD_INNER}" fill="none" stroke="{INK}" stroke-width="1.5" />'
+        f'<g fill="{INK}">{FANGS}</g></svg>'
+    )
+
+
+def favicon_svg():
+    return shield_svg(100, 120) + "\n"
+
+
+def og_card_html():
+    return f"""<!DOCTYPE html>
+<html><head><meta charset="UTF-8" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital@1&amp;display=block" />
+<style>
+  html, body {{ margin: 0; width: 1200px; height: 630px; overflow: hidden; }}
+  body {{ background: {PAPER}; color: {INK}; display: flex; flex-direction: column; align-items: center; justify-content: center; }}
+  .frame {{ position: absolute; inset: 28px; border: 2px solid {INK}; }}
+  .frame::after {{ content: ""; position: absolute; inset: 8px; border: 1px solid {INK}; }}
+  .word {{ margin-top: 18px; font: italic 400 112px/1.1 "EB Garamond", serif; letter-spacing: -0.02em; }}
+  .word span {{ margin-right: -0.09em; }}
+</style></head>
+<body>
+  <div class="frame"></div>
+  {shield_svg(220, 264)}
+  <div class="word"><span>J</span>aguar</div>
+</body></html>
+"""
+
+
+def icon_card_html():
+    return f"""<!DOCTYPE html>
+<html><head><meta charset="UTF-8" />
+<style>
+  html, body {{ margin: 0; width: 180px; height: 180px; overflow: hidden; }}
+  body {{ background: {PAPER}; display: flex; align-items: center; justify-content: center; }}
+</style></head>
+<body>{shield_svg(104, 125)}</body></html>
+"""
+
+
+def render_images(root):
+    """Rasterise the share card and touch icon with headless Chrome, if installed."""
+    chrome = next((c for c in (
+        "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+        shutil.which("google-chrome") or "",
+        shutil.which("chromium") or "",
+    ) if c and os.path.exists(c)), None)
+    if not chrome:
+        print("Chrome not found; skipped images/og.png and images/apple-touch-icon.png")
+        return
+    for src, out, size in (
+        ("sketches/og-card.html", "images/og.png", "1200,630"),
+        ("sketches/icon-card.html", "images/apple-touch-icon.png", "180,180"),
+    ):
+        subprocess.run([
+            chrome, "--headless=new", "--disable-gpu", "--hide-scrollbars",
+            f"--window-size={size}", "--virtual-time-budget=5000",
+            f"--screenshot={os.path.join(root, out)}",
+            "file://" + os.path.join(root, src),
+        ], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
 
 TYPE_SPECIMEN = """<!DOCTYPE html>
