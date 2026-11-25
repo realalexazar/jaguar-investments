@@ -18,14 +18,14 @@ ROMAN = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"]
 # slug, menu label, page title, one-sentence copy, kind
 # kind: offering | about | investors | contact
 PAGES = [
+    ("credit", "Credit", "Credit",
+     "We lend against real estate and business assets, from senior loans through mezzanine.",
+     "offering"),
+    ("equity", "Equity", "Equity",
+     "We invest in real estate and private companies, and build businesses of our own.",
+     "offering"),
     ("capital-markets", "Capital Markets", "Capital Markets",
      "Debt and equity financing for real estate and operating companies. We structure the capital, run the process, and negotiate terms with lenders and investors.",
-     "offering"),
-    ("real-estate", "Real Estate", "Real Estate",
-     "We acquire, recapitalize, and co-invest in commercial real estate, on our own account and alongside partners.",
-     "offering"),
-    ("private-equity", "Private Equity", "Private Equity",
-     "Direct and co-investments in private companies and real-asset platforms.",
      "offering"),
     ("underwriting", "Underwriting &amp; Consulting", "Underwriting &amp; Consulting",
      "Independent underwriting, due diligence, and transaction advice for owners, lenders, and investors.",
@@ -46,6 +46,36 @@ PAGES = [
      "For new business, financing requests, and general inquiries.",
      "contact"),
 ]
+
+# Lines of business listed on an offering page, above Transactions.
+LINES = {
+    "credit": [
+        ("Real Estate Credit",
+         "Acquisition, bridge, construction, and refinance loans on commercial and residential property."),
+        ("Asset-Based Lending",
+         "Loans secured by receivables, inventory, equipment, and other business assets."),
+        ("Senior Debt",
+         "First-lien loans, senior in the capital stack."),
+        ("Mezzanine Debt",
+         "Subordinate debt and preferred equity between the senior loan and the sponsor&rsquo;s equity."),
+    ],
+    "equity": [
+        ("Real Estate Investment",
+         "We lend, acquire, recapitalize, and co-invest in commercial and residential real estate."),
+        ("Operating Companies",
+         "Businesses we start from scratch, then build and run ourselves."),
+        ("Acquisitions",
+         "Control investments in established private businesses."),
+        ("Growth Investments",
+         "Minority stakes in private companies, alongside founders and management."),
+    ],
+}
+
+# Retired pages forward to where their content now lives.
+REDIRECTS = {
+    "real-estate": "equity.html#real-estate-investment",
+    "private-equity": "equity.html",
+}
 
 # PLACEHOLDERS per offering. Replace before launch.
 # Shown under Transactions / Case Studies on each offering page.
@@ -145,8 +175,8 @@ def head(title, description, path=""):
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&amp;family=Libre+Caslon+Text:ital@0;1&amp;family=EB+Garamond:ital@1&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&amp;family=Inter:wght@400;500;600&amp;display=swap" />
-  <link rel="stylesheet" href="base.css?v=10" />
-  <link rel="stylesheet" href="themes/merchant.css?v=10" />
+  <link rel="stylesheet" href="base.css?v=11" />
+  <link rel="stylesheet" href="themes/merchant.css?v=11" />
 </head>
 <body>
 
@@ -255,11 +285,35 @@ def study_card(kind, name, place, summary, date):
         </article>"""
 
 
-def offering_sections():
+def anchor(name):
+    return "".join(c if c.isalnum() else "-" for c in name.lower()).strip("-")
+
+
+def lines_block(slug):
+    lines = LINES.get(slug)
+    if not lines:
+        return ""
+    items = "\n".join(
+        f'            <li class="line" id="{anchor(name)}">\n'
+        f'              <h3 class="line-name">{name}</h3>\n'
+        f'              <p class="line-copy">{copy}</p>\n'
+        f'            </li>'
+        for name, copy in lines
+    )
+    return f"""
+        <section class="dossier-block" aria-labelledby="lines-heading">
+          <h2 id="lines-heading" class="dossier-label">Lines of Business</h2>
+          <ul class="lines">
+{items}
+          </ul>
+        </section>"""
+
+
+def offering_sections(slug):
     n = notice_card(*PLACEHOLDER_NOTICE)
     s = study_card(*PLACEHOLDER_STUDY)
     return f"""
-      <div class="dossier">
+      <div class="dossier">{lines_block(slug)}
         <section class="dossier-block" aria-labelledby="tx-heading">
           <h2 id="tx-heading" class="dossier-label">Transactions</h2>
           <p class="dossier-note">Appear as a matter of record only.</p>
@@ -308,7 +362,7 @@ def page(i):
     if kind == "offering":
         body = f"""      <p class="page-copy">{copy}</p>
       <a href="contact.html" class="button">Contact Us</a>
-{offering_sections()}"""
+{offering_sections(slug)}"""
     elif kind == "about":
         body = about_body(copy)
     elif kind == "investors":
@@ -364,6 +418,16 @@ def main():
     old = os.path.join(root, "transactions.html")
     if os.path.exists(old):
         os.remove(old)
+
+    for old_slug, target in REDIRECTS.items():
+        write(f"{old_slug}.html", f"""<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8" />
+<title>Jaguar Investments</title>
+<meta name="robots" content="noindex" />
+<link rel="canonical" href="{SITE}/{target.split('#')[0]}" />
+<meta http-equiv="refresh" content="0; url={target}" />
+</head><body><a href="{target}">Continue to Jaguar Investments</a></body></html>
+""")
 
     # Italic type specimen (preview only; not linked from the site)
     write("sketches/type.html", TYPE_SPECIMEN)
